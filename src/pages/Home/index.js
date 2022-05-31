@@ -37,12 +37,12 @@ const Home = () => {
                 }
             )
             .then(({ data }) => {
-                console.log(filter);
                 setCurReports(data.data.data);
                 setPageQuantity(Math.ceil(data.data.sizeQuerySnapshot/30))
             })
             .catch((error) => {
                 console.error(error);
+                alert(error)
             });
     }
 
@@ -99,7 +99,6 @@ const Home = () => {
     }, [])
 
     const handleSelect = () => {
-        console.log(showPicker);
         setShowPicker(!showPicker)
     }
 

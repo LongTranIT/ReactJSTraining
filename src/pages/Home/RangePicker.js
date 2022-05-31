@@ -26,6 +26,7 @@ const RangePicker = ({ setShowPicker, setDateFilter, setFilter }) => {
         setFilter(preState => {
             return {
                 ...preState,
+                page:1,
                 reportTime: startDate + ',' + endDate
             }
         })

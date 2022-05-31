@@ -8,19 +8,47 @@ const Pagination = ({ filter, pageQuantity, setFilter }) => {
             page:newPage
         }))
     }
+    const handlePrevPage=()=>{
+        if(filter.page>1){
+            const newPage=+(filter.page)-1
+            setFilter(preFilter=>({
+                ...preFilter,
+                page:newPage
+            }))
+        }
+    }
+    const handleNextPage=()=>{
+        if(filter.page<pageQuantity){
+            const newPage=+(filter.page)+1
+            setFilter(preFilter=>({
+                ...preFilter,
+                page:newPage
+            }))
+        }
+    }
     return (
         <div className="pagination">
-            <div>&laquo;</div>
+            <div 
+                onClick={handlePrevPage}
+                className={filter.page==1?'disable':''}
+            >
+                &laquo;
+            </div>
             {[...Array(pageQuantity)].map((x, i) =>
                 <div 
                     key={i}
-                    className={i+1==filter.page?'active':'a'}
+                    className={i+1==filter.page?'active':''}
                     onClick={(e)=>handleChangePage(e)}
                 >
                     {i+1}
                 </div>
             )}
-            <div>&raquo;</div>
+            <div 
+                onClick={handleNextPage}
+                className={filter.page==pageQuantity?'disable':''}
+            >
+                &raquo;
+            </div>
         </div>
     )
 }

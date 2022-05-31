@@ -4,6 +4,7 @@ const FilterBox = ({ setShowFilterBox, setFilter, common, departments, filter })
     const departmentsSelect= useRef()
     const statusSelect= useRef()
     const typesSelect= useRef()
+    const searchKeyInput= useRef()
 
     const handleFilter=()=>{
         setFilter(preState=>{
@@ -26,6 +27,10 @@ const FilterBox = ({ setShowFilterBox, setFilter, common, departments, filter })
             else{
                 delete filterNew.reportType
             }
+            if(searchKeyInput.current.value)
+                filterNew.searchKey=searchKeyInput.current.value
+            else
+                delete filterNew.searchKey
             filterNew.page=1
             return filterNew
         })
@@ -73,6 +78,10 @@ const FilterBox = ({ setShowFilterBox, setFilter, common, departments, filter })
                         })
                     }
                 </select>
+            </div>
+            <div className='filterItem'>
+                <label htmlFor="reportType">Nhập từ khóa:</label>
+                <input ref={searchKeyInput} defaultValue={filter.searchKey}/>
             </div>
             <button className='filterBtn' onClick={handleFilter}>OK</button>
         </>
