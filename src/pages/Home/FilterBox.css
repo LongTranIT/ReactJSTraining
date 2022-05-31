@@ -1,0 +1,19 @@
+
+.filterItem{
+    padding: 12px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+.filterBtn{
+    background-color: rgb(104, 179, 204);
+    border: none;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.filterBtn:hover{
+    background-color: rgb(52, 128, 153);
+}
+  
